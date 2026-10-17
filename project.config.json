@@ -44,7 +44,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.33.0",
-  "appid": "touristappid",
+  "appid": "wxf3031e488a7a5bff",
   "projectname": "family-menu",
   "cloudfunctionRoot": "cloudfunctions/",
   "miniprogramRoot": "miniprogram/",
