@@ -1,0 +1,83 @@
+<view class="topbar">
+  <view class="topbar-title">🛎️ 我的小食堂后台</view>
+  <view class="topbar-sub">她的点单会实时出现在这里</view>
+</view>
+
+<view class="tabs">
+  <view class="tab {{tab==='orders'?'active':''}}" data-tab="orders" bindtap="switchTab">接单看板</view>
+  <view class="tab {{tab==='dishes'?'active':''}}" data-tab="dishes" bindtap="switchTab">菜品管理</view>
+</view>
+
+<!-- 接单看板 -->
+<block wx:if="{{tab==='orders'}}">
+  <view class="seg">
+    <view class="seg-item {{orderToShow==='pending'?'on':''}}" bindtap="showPending">新单（{{pendingOrders.length}}）</view>
+    <view class="seg-item {{orderToShow==='history'?'on':''}}" bindtap="showHistory">历史单</view>
+  </view>
+
+  <block wx:if="{{orderToShow==='pending'}}">
+    <view wx:for="{{pendingOrders}}" wx:key="_id" class="card order-card new">
+      <view class="o-head">
+        <text class="o-from">👤 {{item.nickName || 'TA'}}</text>
+        <text class="o-time">{{item.timeText}}</text>
+      </view>
+      <view class="o-no"># {{item.orderNo}}</view>
+      <view class="o-items">
+        <view class="o-it" wx:for="{{item.items}}" wx:for-item="it" wx:key="id">
+          <text>{{it.name}}</text><text>×{{it.count}}</text><text class="o-price">¥{{it.price}}</text>
+        </view>
+      </view>
+      <view class="o-note" wx:if="{{item.note}}">📝 {{item.note}}</view>
+      <view class="o-foot">
+        <text class="o-total">合计 ¥{{item.total}}</text>
+        <view class="o-actions">
+          <view class="btn-ghost small" data-id="{{item._id}}" data-status="2" data-no="{{item.orderNo}}" bindtap="setStatus">取消</view>
+          <view class="btn-primary small" data-id="{{item._id}}" data-status="1" data-no="{{item.orderNo}}" bindtap="setStatus">完成 ✓</view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{!pendingOrders.length && !loadingOrders}}" class="empty">
+      <text class="big">🌙</text>现在没有新单，去歇会儿吧
+    </view>
+  </block>
+
+  <block wx:if="{{orderToShow==='history'}}">
+    <view wx:for="{{historyOrders}}" wx:key="_id" class="card order-card">
+      <view class="o-head">
+        <text class="o-from">👤 {{item.nickName || 'TA'}}</text>
+        <text class="tag {{item.status==1?'tag-ok':'tag-cancel'}}">{{item.status==1?'已完成':'已取消'}}</text>
+      </view>
+      <view class="o-no"># {{item.orderNo}} · {{item.timeText}}</view>
+      <view class="o-items">
+        <view class="o-it" wx:for="{{item.items}}" wx:for-item="it" wx:key="id">
+          <text>{{it.name}}</text><text>×{{it.count}}</text><text class="o-price">¥{{it.price}}</text>
+        </view>
+      </view>
+      <view class="o-foot"><text class="o-total">合计 ¥{{item.total}}</text></view>
+    </view>
+    <view wx:if="{{!historyOrders.length}}" class="empty"><text class="big">🗓</text>还没有历史订单</view>
+  </block>
+</block>
+
+<!-- 菜品管理 -->
+<block wx:if="{{tab==='dishes'}}">
+  <view class="add-bar">
+    <view class="btn-primary add-btn" bindtap="addDish">＋ 添加一道菜</view>
+  </view>
+  <view wx:for="{{dishes}}" wx:key="_id" class="card dish-row">
+    <image class="d-img" src="{{item.imgs && item.imgs[0] || '/images/placeholder.png'}}" mode="aspectFill" />
+    <view class="d-info">
+      <view class="d-name">{{item.name}} <text class="d-cate" wx:if="{{item.category}}">{{item.category}}</text></view>
+      <view class="d-price">¥{{item.price}}</view>
+    </view>
+    <view class="d-ops">
+      <view class="mini {{item.available?'on':''}}" data-id="{{item._id}}" data-available="{{item.available}}" bindtap="toggleDish">{{item.available?'上架中':'已下架'}}</view>
+      <view class="d-row2">
+        <text class="op" data-id="{{item._id}}" bindtap="editDish">编辑</text>
+        <text class="op del" data-id="{{item._id}}" data-name="{{item.name}}" bindtap="deleteDish">删除</text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{!dishes.length && !loadingDishes}}" class="empty"><text class="big">🍳</text>还没有菜品，点上面的按钮添加第一道菜吧</view>
+</block>

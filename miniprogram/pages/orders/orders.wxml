@@ -1,0 +1,27 @@
+<view wx:for="{{orders}}" wx:key="_id" class="card order">
+  <view class="order-head">
+    <text class="order-no">单号 {{item.orderNo}}</text>
+    <text class="tag {{statusTag(item.status)}}">{{statusText(item.status)}}</text>
+  </view>
+
+  <view class="items">
+    <view class="it-row" wx:for="{{item.items}}" wx:for-item="it" wx:key="id">
+      <text class="it-name">{{it.name}}</text>
+      <text class="it-count">×{{it.count}}</text>
+      <text class="it-price">¥{{it.price}}</text>
+    </view>
+  </view>
+
+  <view class="order-note" wx:if="{{item.note}}">备注：{{item.note}}</view>
+
+  <view class="order-foot">
+    <text class="time">{{item.timeText || item.createdAt}}</text>
+    <text class="order-total">合计 ¥{{item.total}}</text>
+  </view>
+</view>
+
+<view wx:if="{{!loading && !orders.length}}" class="empty">
+  <text class="big">📋</text>
+  还没有订单，点个喜欢的菜吧
+</view>
+<view wx:if="{{loading}}" class="empty"><text class="big">⏳</text>加载中...</view>

@@ -1,0 +1,24 @@
+/* pages/mine/mine.wxss */
+.profile {
+  display: flex; align-items: center;
+  padding: 56rpx 36rpx;
+  background: linear-gradient(150deg, #ffe8d0, #fff3e4);
+}
+.avatar { width: 120rpx; height: 120rpx; border-radius: 50%; border: 4rpx solid #fff; background: #f5efe8; }
+.p-info { margin-left: 26rpx; }
+.p-name { font-size: 36rpx; font-weight: 800; color: #6a3f16; }
+.p-sub { font-size: 24rpx; color: #b08050; margin-top: 8rpx; }
+
+.menu-item {
+  display: flex; align-items: center;
+  padding: 28rpx 8rpx;
+  border-bottom: 1rpx solid #f5efe8;
+}
+.menu-item:last-child { border-bottom: none; }
+.mi-icon { font-size: 40rpx; margin-right: 22rpx; }
+.mi-text { flex: 1; font-size: 30rpx; }
+.mi-arrow { color: #c0b0a0; font-size: 36rpx; }
+
+.intro { margin-top: 26rpx; }
+.intro-title { font-size: 28rpx; font-weight: 700; margin-bottom: 14rpx; }
+.intro-text { font-size: 26rpx; color: #8a7a6a; line-height: 1.8; }

@@ -1,0 +1,28 @@
+<view wx:if="{{dish}}">
+  <swiper class="big-swiper" wx:if="{{dish.imgs.length}}" indicator-dots autoplay circular>
+    <swiper-item wx:for="{{dish.imgs}}" wx:key="*this">
+      <image class="big-img" src="{{item}}" mode="aspectFill" data-src="{{item}}" bindtap="onSwiperImg" />
+    </swiper-item>
+  </swiper>
+  <image wx:else class="big-img" src="/images/placeholder.png" mode="aspectFill" />
+
+  <view class="card info">
+    <view class="row">
+      <text class="name">{{dish.name}}</text>
+      <text class="price">¥{{dish.price}}</text>
+    </view>
+    <view class="desc">{{dish.desc || '还没有描述，等你补充~'}}</view>
+    <view class="row cate" wx:if="{{dish.category}}">
+      <text class="tag tag-wait"># {{dish.category}}</text>
+    </view>
+  </view>
+
+  <view class="cart-bar">
+    <view class="stepper">
+      <view class="step" bindtap="onMinus">−</view>
+      <text class="num">{{count}}</text>
+      <view class="step" bindtap="onPlus">+</view>
+    </view>
+    <view class="btn-primary go" bindtap="addToCart">加入点单</view>
+  </view>
+</view>

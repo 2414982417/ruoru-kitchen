@@ -1,0 +1,21 @@
+# ===== 微信小程序 / 云开发 =====
+# 开发者工具的本地缓存与调试文件
+miniprogram/devtools/
+.project.config.json
+# 个人私密配置（AppID、编译器设置等），不要上传
+project.private.config.json
+# 编译产物
+miniprogram/miniprogram_npm/
+miniprogram_npm/
+
+# ===== Node.js =====
+node_modules/
+*.log
+npm-debug.log*
+
+# ===== 系统 =====
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/

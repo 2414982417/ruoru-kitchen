@@ -1,0 +1,36 @@
+/* pages/cart/cart.wxss */
+.body { padding-bottom: 200rpx; }
+.item { display: flex; align-items: center; }
+.item-img { width: 110rpx; height: 110rpx; border-radius: 14rpx; background: #f5efe8; flex-shrink: 0; }
+.item-info { flex: 1; margin-left: 20rpx; }
+.item-name { font-size: 30rpx; font-weight: 600; }
+.dish-price-inline { color: #d97b29; font-weight: 700; font-size: 28rpx; margin-top: 6rpx; }
+.stepper { display: flex; align-items: center; margin-top: 12rpx; }
+.step {
+  width: 44rpx; height: 44rpx; border-radius: 50%;
+  background: #fff3e4; color: #d97b29;
+  font-size: 32rpx; display: flex; align-items: center; justify-content: center; line-height: 1;
+}
+.num { min-width: 60rpx; text-align: center; font-size: 30rpx; font-weight: 700; }
+
+.note-box { }
+.note-area {
+  width: 100%; min-height: 120rpx;
+  border-radius: 14rpx; background: #fff8f0;
+  padding: 20rpx; font-size: 26rpx; color: #6a5a48;
+}
+.note-bar { margin-top: 12rpx; display: flex; justify-content: flex-end; }
+.clear-btn { font-size: 24rpx; color: #b0a090; }
+
+.footer {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  background: #fff; padding: 16rpx 28rpx;
+  padding-bottom: calc(16rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 -6rpx 24rpx rgba(0,0,0,.06);
+}
+.total { display: flex; align-items: baseline; }
+.total-label { font-size: 24rpx; color: #8a7a6a; margin-right: 10rpx; }
+.total-price { font-size: 44rpx; font-weight: 800; color: #d97b29; }
+.submit-btn { width: 280rpx; }

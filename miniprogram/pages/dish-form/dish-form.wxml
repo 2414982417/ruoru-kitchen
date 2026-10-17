@@ -1,0 +1,40 @@
+<view class="card">
+  <view class="label">菜品照片</view>
+  <view class="img-grid">
+    <view class="img-box" wx:for="{{imgs}}" wx:key="*this">
+      <image class="pv" src="{{item}}" mode="aspectFill" data-src="{{item}}" bindtap="previewImg" />
+      <view class="del" data-index="{{index}}" catchtap="removeImg">×</view>
+    </view>
+    <view class="img-add" bindtap="chooseImg" wx:if="{{imgs.length<9}}">
+      <text class="plus">＋</text>
+      <text class="hint">上传照片</text>
+    </view>
+  </view>
+</view>
+
+<view class="card">
+  <view class="label">菜名</view>
+  <input class="input" placeholder="比如：可乐鸡翅" value="{{name}}" bindinput="onName" />
+
+  <view class="label">价格（元）</view>
+  <input class="input" type="digit" placeholder="0.00" value="{{price}}" bindinput="onPrice" />
+
+  <view class="label">分类</view>
+  <input class="input" placeholder="比如：主食 / 炒菜 / 汤 / 甜品" value="{{category}}" bindinput="onCategory" />
+  <view class="chips" wx:if="{{categories.length}}">
+    <view
+      class="chip {{category===item?'on':''}}"
+      wx:for="{{categories}}"
+      wx:key="*this"
+      data-cat="{{item}}"
+      bindtap="onCategoryChip"
+    >{{item}}</view>
+  </view>
+
+  <view class="label">描述 / 小故事</view>
+  <textarea class="area" placeholder="记录这道菜的小故事，或者做这道菜的小秘诀..." value="{{desc}}" bindinput="onDesc" maxlength="120" auto-height />
+</view>
+
+<view class="save-area">
+  <view class="btn-primary save-btn" bindtap="submit">{{saving ? '保存中...' : '保存菜品'}}</view>
+</view>

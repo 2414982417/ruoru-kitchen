@@ -1,0 +1,52 @@
+<view class="header">
+  <view class="header-title">🍲 今天想吃点什么？</view>
+  <view class="header-sub">为 TA 用心做一顿饭吧</view>
+</view>
+
+<view class="cat-wrap" wx:if="{{categories.length}}">
+  <scroll-view scroll-x class="cats">
+    <view
+      wx:for="{{categories}}"
+      wx:key="*this"
+      class="cat {{activeCategory===item?'active':''}}"
+      data-name="{{item}}"
+      bindtap="onCategory"
+    >{{item}}</view>
+  </scroll-view>
+</view>
+
+<view class="dish-list">
+  <view
+    class="card dish"
+    wx:for="{{list}}"
+    wx:key="_id"
+    data-id="{{item._id}}"
+    bindtap="goDetail"
+  >
+    <image class="dish-img" src="{{item.imgs && item.imgs[0] ? item.imgs[0] : '/images/placeholder.png'}}" mode="aspectFill" />
+    <view class="dish-info">
+      <view class="dish-name">{{item.name}}</view>
+      <view class="dish-desc">{{item.desc || '记录一道美味~'}}</view>
+      <view class="dish-foot">
+        <text class="dish-price">¥{{item.price}}</text>
+        <view class="add-btn" data-dish="{{item}}" catchtap="addToCart">+</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{!loading && list.length===0}}" class="empty">
+    <text class="big">🍽</text>
+    还没有菜品，去「我的 → 后台」添加吧
+  </view>
+  <view wx:if="{{loading}}" class="empty">
+    <text class="big">⏳</text>菜谱加载中...
+  </view>
+</view>
+
+<view class="cart-bar" wx:if="{{cartCount>0}}" bindtap="goCart">
+  <view class="cart-info">
+    <text class="cart-emoji">🛒</text>
+    <text>已选 {{cartCount}} 件</text>
+  </view>
+  <view class="cart-go">去点单 ›</view>
+</view>

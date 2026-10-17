@@ -1,0 +1,87 @@
+/* app.wxss 全局样式：暖色调、生活感 */
+page {
+  --main: #d97b29;
+  --main-light: #f6b267;
+  --bg: #fff8f0;
+  --card: #ffffff;
+  --text: #4a4038;
+  --text-weak: #b0a090;
+  --danger: #d9534f;
+  --ok: #5ca05c;
+  --radius: 20rpx;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", Helvetica,
+    "Microsoft YaHei", sans-serif;
+  box-sizing: border-box;
+}
+view, text, input, textarea, button, image { box-sizing: border-box; }
+
+/* 通用卡片 */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 24rpx;
+  margin: 20rpx;
+  box-shadow: 0 6rpx 24rpx rgba(217, 123, 41, 0.06);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--text);
+  margin: 24rpx 28rpx 8rpx;
+  display: flex;
+  align-items: center;
+}
+.section-title::before {
+  content: "";
+  width: 8rpx;
+  height: 30rpx;
+  background: var(--main);
+  border-radius: 4rpx;
+  margin-right: 14rpx;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #f6a34f, #d97b29);
+  color: #fff;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  padding: 20rpx 0;
+  text-align: center;
+  box-shadow: 0 8rpx 20rpx rgba(217, 123, 41, 0.28);
+}
+.btn-primary::after { border: none; }
+
+.btn-ghost {
+  background: #fff;
+  color: var(--main);
+  border: 2rpx solid var(--main-light);
+  border-radius: 44rpx;
+  font-size: 28rpx;
+  padding: 16rpx 0;
+  text-align: center;
+}
+.btn-ghost::after { border: none; }
+
+.empty {
+  padding: 120rpx 40rpx;
+  text-align: center;
+  color: var(--text-weak);
+  font-size: 28rpx;
+  line-height: 1.8;
+}
+.empty .big { font-size: 60rpx; display: block; margin-bottom: 16rpx; }
+
+.tag {
+  display: inline-block;
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  margin-right: 8rpx;
+}
+.tag-ok { background: #e8f5e9; color: var(--ok); }
+.tag-wait { background: #fff3e0; color: var(--main); }
+.tag-cancel { background: #f5f5f5; color: var(--text-weak); }

@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/cart/cart",
+    "pages/orders/orders",
+    "pages/mine/mine",
+    "pages/admin/admin",
+    "pages/dish-form/dish-form",
+    "pages/dish-detail/dish-detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff7ed",
+    "navigationBarTitleText": "家庭菜单",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fff8f0"
+  },
+  "tabBar": {
+    "color": "#b0a090",
+    "selectedColor": "#d97b29",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "菜单"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "点单"
+      },
+      {
+        "pagePath": "pages/orders/orders",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
