@@ -1,6 +1,6 @@
 <view class="header">
-  <view class="header-title">🍲 今天想吃点什么？</view>
-  <view class="header-sub">为 TA 用心做一顿饭吧</view>
+  <view class="header-title">🍲 若若家庭厨房</view>
+  <view class="header-sub">今天想吃点什么？为 TA 用心做一顿饭吧</view>
 </view>
 
 <view class="cat-wrap" wx:if="{{categories.length}}">
